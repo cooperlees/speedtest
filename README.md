@@ -1,5 +1,7 @@
 # speedtest
-Docker Container with latest Official Speedtest Docker
+Docker Container with latest Official Speedtest CLI wrapped into a prometheus exporter.
+
+Seems to outperform all the native python alternatives out there.
 
 ## speedtest-wrapper
 
