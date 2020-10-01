@@ -1,0 +1,40 @@
+{
+    "type": "result",
+    "timestamp": "2020-10-01T04:43:06Z",
+    "ping": {
+        "jitter": 4.2930000000000001,
+        "latency": 7.0590000000000002
+    },
+    "download": {
+        "bandwidth": 32714808,
+        "bytes": 494409712,
+        "elapsed": 15008
+    },
+    "upload": {
+        "bandwidth": 4703540,
+        "bytes": 23492352,
+        "elapsed": 5017
+    },
+    "packetLoss": 0,
+    "isp": "Spectrum",
+    "interface": {
+        "internalIp": "66.214.99.163",
+        "name": "enp1s0",
+        "macAddr": "00:E0:67:20:1F:C8",
+        "isVpn": false,
+        "externalIp": "66.214.99.163"
+    },
+    "server": {
+        "id": 2408,
+        "name": "Spectrum",
+        "location": "Reno, NV",
+        "country": "United States",
+        "host": "spt01renonv.reno.nv.charter.com",
+        "port": 8080,
+        "ip": "24.205.192.190"
+    },
+    "result": {
+        "id": "af93ff75-52a4-4d45-9097-e2ad712b3682",
+        "url": "https://www.speedtest.net/result/c/af93ff75-52a4-4d45-9097-e2ad712b3682"
+    }
+}
