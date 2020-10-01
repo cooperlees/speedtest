@@ -6,6 +6,7 @@ RUN export DEB_DISTRO=$(lsb_release -sc) ; apt-key adv --keyserver keyserver.ubu
 RUN export DEB_DISTRO=$(lsb_release -sc) ; echo "deb https://ookla.bintray.com/debian ${DEB_DISTRO} main" > /etc/apt/sources.list.d/speedtest.list && apt update && apt install -y speedtest
 RUN mkdir /speedtest_wrapper
 COPY README.md setup.py speedtest_wrapper.py /speedtest_wrapper/
-RUN pip3 install /speedtest_wrapper
+RUN pip3 --no-cache-dir install /speedtest_wrapper
+RUN apt autoremove -y
 
 CMD ["speedtest-wrapper"]
