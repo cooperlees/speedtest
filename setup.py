@@ -9,18 +9,16 @@ from setuptools import setup
 
 def get_long_desc() -> str:
     repo_base = Path(__file__).parent
-    long_desc = ""
-    for info_file in (repo_base / "README.md",):
-        with info_file.open("r", encoding="utf8") as ifp:
-            long_desc += ifp.read()
-        long_desc += "\n\n"
+    info_file = repo_base / "README.md"
+    with info_file.open("r", encoding="utf8") as ifp:
+        long_desc = ifp.read()
 
     return long_desc
 
 
 setup(
     name="speedtest_wrapper",
-    version="20.9.30",
+    version="21.4.27",
     description="Wrap the speedtest cli and exports stats for prometheus",
     long_description=get_long_desc(),
     long_description_content_type="text/markdown",
@@ -37,6 +35,7 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ],
     python_requires=">=3.6",
     entry_points={"console_scripts": ["speedtest-wrapper = speedtest_wrapper:main"]},
