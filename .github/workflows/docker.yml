@@ -33,7 +33,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: pyfound/black:latest,pyfound/black:${{ env.GIT_TAG }}
+          tags: cooperlees/speedtest-wrapper:latest,cooperlees/speedtest-wrapper:${{ env.GIT_TAG }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
