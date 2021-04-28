@@ -32,7 +32,7 @@ jobs:
 
     - name: Run Formatting
       run: |
-        black *.py
+        black --check *.py
 
     - name: Run Tests
       run: |
