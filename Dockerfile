@@ -1,6 +1,6 @@
 FROM python:slim
 
-RUN echo 'UTC' > /etc/localtime && apt update && apt install -y curl python3-pip
+RUN echo 'UTC' > /etc/localtime && apt update && apt install -y curl
 RUN curl -s https://install.speedtest.net/app/cli/install.deb.sh | bash
 RUN apt-get install speedtest
 RUN mkdir /speedtest_wrapper
