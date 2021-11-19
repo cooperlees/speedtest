@@ -18,7 +18,7 @@ def get_long_desc() -> str:
 
 setup(
     name="speedtest_wrapper",
-    version="21.9.2",
+    version="21.11.19",
     description="Wrap the speedtest cli and exports stats for prometheus",
     long_description=get_long_desc(),
     long_description_content_type="text/markdown",
