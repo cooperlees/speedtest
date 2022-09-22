@@ -27,6 +27,9 @@ class SpeedtestCollector:
     key_prefix = "speedtest"
     labels = ["hostname", "speedtest_host"]
 
+    def __init__(self, debug: bool) -> None:
+        self.debug = debug
+
     def _handle_counter(self, category: str, value: float) -> GaugeMetricFamily:
         normalized_category = category.replace(" ", "_")
         key = f"{self.key_prefix}_{normalized_category}"
@@ -46,7 +49,11 @@ class SpeedtestCollector:
             )
             return
         elif not speedtest_data:
+            LOG.error("Got no speedtest data")
             return
+
+        if self.debug:
+            print(speedtest_data, flush=True)
 
         self.speedtest_host = speedtest_data["server"]["host"]
         for category, value in speedtest_data.items():
@@ -55,7 +62,14 @@ class SpeedtestCollector:
             elif category not in self.IGNORE_CATEGORIES and isinstance(value, dict):
                 for subcategory, subvalue in value.items():
                     combined_category = f"{category}_{subcategory}"
-                    yield self._handle_counter(combined_category, float(subvalue))
+                    if combined_category in {"download_latency", "upload_latency"}:
+                        for subsubcategory, subsubvalue in subvalue.items():
+                            yield self._handle_counter(
+                                f"{combined_category}_{subsubcategory}",
+                                float(subsubvalue),
+                            )
+                    else:
+                        yield self._handle_counter(combined_category, float(subvalue))
 
         run_time = time.time() - start_time
         LOG.info(f"Collection finished in {run_time}s")
@@ -94,7 +108,7 @@ def main() -> int:
 
     LOG.info(f"Starting {sys.argv[0]}")
     start_http_server(args.port)
-    REGISTRY.register(SpeedtestCollector())
+    REGISTRY.register(SpeedtestCollector(args.debug))
     LOG.info(f"Speedtest Prometheus Exporter - listening on {args.port}")
     try:
         while True:
@@ -104,5 +118,5 @@ def main() -> int:
     return 0
 
 
-if __name__ == "__main__":
-    sys.exit(main())  # pragma: no cover
+if __name__ == "__main__":  # pragma: no cover
+    sys.exit(main())
