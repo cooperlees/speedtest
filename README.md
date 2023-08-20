@@ -17,6 +17,7 @@ We only support latest version of python as we're predominately a `Docker` deplo
 ```console
 python3 -m venv --upgrade-deps /tmp/ts
 /tmp/ts/bin/pip install black coverage
+/tmp/ts/bin/pip install -e .
 /tmp/ts/bin/coverage run tests.py
 /tmp/ts/bin/coverage report -m
 ```
