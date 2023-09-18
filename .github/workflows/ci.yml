@@ -4,25 +4,21 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: bandersnatch CI python ${{ matrix.python-version }} on ${{matrix.os}}
-    # We want to run on external PRs, but not on our own internal PRs (for the
-    # pull_request event) as they'll be run by the push to the branch. Without
-    # this if check, ci workflow checks are duplicated since internal PRs match
-    # both the push and pull_request events.
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
-
+    name: speedetst CI python ${{ matrix.python-version }} on ${{matrix.os}}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python-version: ["3.11"]
+        python-version: ["3.11", "3.12"]
         os: [ubuntu-latest]
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
+        allow-prereleases: true
 
     - name: Install latest pip, setuptools + black & coverage
       run: |
