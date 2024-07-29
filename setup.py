@@ -18,7 +18,7 @@ def get_long_desc() -> str:
 
 setup(
     name="speedtest_wrapper",
-    version="23.8.20",
+    version="24.7.29",
     description="Wrap the speedtest cli and exports stats for prometheus",
     long_description=get_long_desc(),
     long_description_content_type="text/markdown",
@@ -32,9 +32,9 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
     ],
-    python_requires=">=3.11",
+    python_requires=">=3.12",
     entry_points={"console_scripts": ["speedtest-wrapper = speedtest_wrapper:main"]},
     install_requires=["prometheus_client"],
 )
