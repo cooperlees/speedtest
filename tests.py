@@ -5,7 +5,6 @@ from unittest.mock import Mock, patch
 
 import speedtest_wrapper
 
-
 # 20220921 return
 MOCK_SPEEDTEST_JSON = {
     "type": "result",

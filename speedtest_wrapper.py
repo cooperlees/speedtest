@@ -16,7 +16,6 @@ from typing import Dict, Generator, Union
 from prometheus_client.core import GaugeMetricFamily, REGISTRY
 from prometheus_client import start_http_server
 
-
 DEFAULT_PORT = 6970
 HOSTNAME = getfqdn()
 LOG = logging.getLogger(__name__)
